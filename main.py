@@ -39,4 +39,10 @@ async def classify_mushroom(file: UploadFile = File(...)):
             "infoUrl": f"https://en.wikipedia.org/wiki/{str(pred_class).replace(' ', '_')}"
         }
     except Exception as e:
-        return {"error": str(e)}
+        print(f"Oracle threw error: {e}")
+        return {
+            "name": "unknown",
+            "confidence": 0.0,
+            "isEdible": False,
+            "infoUrl": None
+        }
